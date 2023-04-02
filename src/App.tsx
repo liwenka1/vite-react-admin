@@ -1,32 +1,26 @@
-import { useState } from 'react'
-import CompOne from './components/CompOne'
-import CompTwo from './components/CompTwo'
-import { Button, Space } from 'antd'
-import { StepBackwardOutlined } from '@ant-design/icons'
+// import { useState } from 'react'
+// import CompOne from './components/CompOne'
+// import CompTwo from './components/CompTwo'
+// import { Button, Space } from 'antd'
+// import { StepBackwardOutlined } from '@ant-design/icons'
+import { useRoutes, Link } from 'react-router-dom'
+import routers from './router'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const handClick = () => {
-    setCount((count) => {
-      return count + 1
-    })
-  }
-
+  // const [count, setCount] = useState(0)
+  // const handClick = () => {
+  //   setCount((count) => {
+  //     return count + 1
+  //   })
+  // }
+  const outlet = useRoutes(routers)
   return (
     <div className="App">
-      top
-      {count}
-      <button onClick={handClick}>点我佳佳</button>
-      <CompOne></CompOne>
-      <CompTwo></CompTwo>
-      <Space wrap>
-        <Button type="primary">Primary Button</Button>
-        <Button>Default Button</Button>
-        <Button type="dashed">Dashed Button</Button>
-        <Button type="text">Text Button</Button>
-        <Button type="link">Link Button</Button>
-        <StepBackwardOutlined />
-      </Space>
+      <Link to="/Home">h</Link>
+      <p>||||</p>
+      <Link to="/About">a</Link>
+      {/* <Outlet></Outlet> */}
+      {outlet}
     </div>
   )
 }
