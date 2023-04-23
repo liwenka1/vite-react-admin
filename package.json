@@ -23,7 +23,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "recoil": "^0.7.7",
-    "reset-css": "^5.0.1"
+    "reset-css": "^5.0.1",
+    "swiper": "^9.2.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.0",
