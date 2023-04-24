@@ -7,8 +7,6 @@ import type { Banner } from '@/models/banner'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-import './swiper.css'
-
 // import required modules
 import { Pagination } from 'swiper'
 
