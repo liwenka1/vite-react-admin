@@ -20,7 +20,7 @@ import type {
   VideoGroup
 } from '@/models/video'
 import type { SearchHotDetail, SearchSuggest } from '@/models/search'
-import type { MvUrl } from '@/models/mv'
+// import type { MvUrl } from '@/models/mv'
 import type { PlayListHot } from '@/models/playlist_hot'
 import type { UserProfile } from '@/models/user'
 
