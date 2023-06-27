@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import {
   DesktopOutlined,
-  FileOutlined,
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
@@ -9,7 +8,7 @@ import {
   VideoCameraOutlined
 } from '@ant-design/icons'
 import type { MenuProps } from 'antd'
-import { Breadcrumb, Layout, Menu, theme } from 'antd'
+import { Layout, Menu, theme } from 'antd'
 import { useNavigate, Outlet } from 'react-router-dom'
 
 const { Header, Content, Footer, Sider } = Layout

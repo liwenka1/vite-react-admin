@@ -11,8 +11,6 @@ interface Props {
 }
 
 const main: React.FC<Props> = (props) => {
-  console.log(props)
-
   return (
     <>
       {props.topPlaylist.playlists.map((item) => (

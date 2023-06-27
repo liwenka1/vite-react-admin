@@ -6,6 +6,7 @@ import type { Banner } from '@/models/banner'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 // import required modules
 import { Autoplay, Navigation, Pagination, A11y } from 'swiper'
@@ -18,15 +19,16 @@ const swiper: React.FC<Props> = (props) => {
   return (
     <>
       <Swiper
-        slidesPerView={5}
+        slidesPerView={4}
         spaceBetween={30}
         loop={true}
-        centeredSlides={true}
+        centeredSlides={false}
         pagination={{
           dynamicBullets: true
         }}
+        navigation
         autoplay={{
-          delay: 2500,
+          delay: 3500,
           disableOnInteraction: false
         }}
         modules={[Autoplay, Navigation, Pagination, A11y]}

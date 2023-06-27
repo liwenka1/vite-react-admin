@@ -1,50 +1,34 @@
 import { Card, Col, Row } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useBanner, useTopPlaylistHighquality } from '@/services/api'
 import Swiper from './swiper'
-import type { Banner } from '@/models/banner'
 import Main from './main'
-import type { PlayListDetail } from '@/models/playlist'
+import { useQueries } from 'react-query'
 
 const index: React.FC = () => {
-  const [bannnerList, setBannnerList] = useState([] as Banner[])
-  const [topPlaylist, setPlayList] = useState({
-    playlists: [] as PlayListDetail[]
-  } as {
-    playlists: PlayListDetail[]
-    total: number
-    more: boolean
-    lasttime: number
-  })
+  const [bannerQuery, playListQuery] = useQueries([
+    { queryKey: ['banner'], queryFn: () => useBanner() },
+    { queryKey: ['playList'], queryFn: () => useTopPlaylistHighquality() }
+  ])
+  let content = null
+  if (bannerQuery.isSuccess && playListQuery.isSuccess) {
+    content = (
+      <Row gutter={16} style={{ margin: '10px' }}>
+        <Col span={24}>
+          <Card bordered={false}>
+            <Swiper bannnerList={bannerQuery.data} />
+          </Card>
+        </Col>
+        <Col span={24} style={{ marginTop: '10px' }}>
+          <Card title="热门推荐" bordered={false}>
+            <Main topPlaylist={playListQuery.data} />
+          </Card>
+        </Col>
+      </Row>
+    )
+  }
 
-  useEffect(() => {
-    const getBanner = async () => {
-      const res = await useBanner()
-      setBannnerList(res)
-    }
-    getBanner()
-
-    const getTopPlaylist = async () => {
-      const res = await useTopPlaylistHighquality()
-      setPlayList(res)
-    }
-    getTopPlaylist()
-  }, [])
-
-  return (
-    <Row gutter={16} style={{ margin: '10px' }}>
-      <Col span={24}>
-        <Card bordered={false}>
-          <Swiper bannnerList={bannnerList} />
-        </Card>
-      </Col>
-      <Col span={24} style={{ marginTop: '10px' }}>
-        <Card title="热门推荐" bordered={false}>
-          <Main topPlaylist={topPlaylist} />
-        </Card>
-      </Col>
-    </Row>
-  )
+  return <>{content}</>
 }
 
 export default index
