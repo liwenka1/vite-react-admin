@@ -1,5 +1,6 @@
 import React from 'react'
 import type { PlayListDetail } from '@/models/playlist'
+import PlayList from '@/components/playList'
 
 interface Props {
   topPlaylist: {
@@ -13,9 +14,7 @@ interface Props {
 const main: React.FC<Props> = (props) => {
   return (
     <>
-      {props.topPlaylist.playlists.map((item) => (
-        <img style={{ width: '10%' }} src={item.coverImgUrl} key={item.id} />
-      ))}
+      <PlayList topPlaylist={props.topPlaylist} />
     </>
   )
 }
