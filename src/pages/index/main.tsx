@@ -11,11 +11,11 @@ interface Props {
   }
 }
 
-const main: React.FC<Props> = (props) => {
+const Main: React.FC<Props> = (props) => {
   return (
     <>
       <PlayList topPlaylist={props.topPlaylist} />
     </>
   )
 }
-export default main
+export default Main

@@ -10,6 +10,8 @@ import {
 import type { MenuProps } from 'antd'
 import { Layout, Menu, theme } from 'antd'
 import { useNavigate, Outlet } from 'react-router-dom'
+import SearchInput from '@/components/search'
+import Login from '@/components/login'
 
 const { Header, Content, Footer, Sider } = Layout
 
@@ -38,7 +40,7 @@ const items: MenuItem[] = [
   getItem('新碟上架', '/album', <CustomerServiceOutlined />)
 ]
 
-const view: React.FC = () => {
+const Home: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false)
   const {
     token: { colorBgContainer }
@@ -50,11 +52,19 @@ const view: React.FC = () => {
   }
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout hasSider>
       <Sider
         collapsible
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
+        style={{
+          overflow: 'auto',
+          height: '100vh',
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          bottom: 0
+        }}
       >
         <div
           style={{
@@ -71,8 +81,16 @@ const view: React.FC = () => {
           onClick={menuClick}
         />
       </Sider>
-      <Layout className="site-layout">
-        <Header style={{ padding: 0, background: colorBgContainer }} />
+      <Layout className="site-layout" style={{ marginLeft: 200 }}>
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer
+          }}
+        >
+          <Login />
+          <SearchInput />
+        </Header>
         <Content style={{ margin: '0 16px' }}>
           <Outlet></Outlet>
         </Content>
@@ -84,4 +102,4 @@ const view: React.FC = () => {
   )
 }
 
-export default view
+export default Home

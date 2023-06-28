@@ -19,7 +19,7 @@ interface Props {
   }
 }
 
-const playList: React.FC<Props> = (props) => (
+const PlayList: React.FC<Props> = (props) => (
   <>
     {props.topPlaylist.playlists.map((item) => (
       <Card
@@ -44,4 +44,4 @@ const playList: React.FC<Props> = (props) => (
   </>
 )
 
-export default playList
+export default PlayList

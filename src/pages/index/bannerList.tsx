@@ -15,7 +15,7 @@ interface Props {
   bannnerList: Banner[]
 }
 
-const swiper: React.FC<Props> = (props) => {
+const BannerList: React.FC<Props> = (props) => {
   return (
     <>
       <Swiper
@@ -26,7 +26,6 @@ const swiper: React.FC<Props> = (props) => {
         pagination={{
           dynamicBullets: true
         }}
-        navigation
         autoplay={{
           delay: 3500,
           disableOnInteraction: false
@@ -43,4 +42,4 @@ const swiper: React.FC<Props> = (props) => {
   )
 }
 
-export default swiper
+export default BannerList

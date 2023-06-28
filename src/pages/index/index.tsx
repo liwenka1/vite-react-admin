@@ -1,11 +1,11 @@
 import { Card, Col, Row } from 'antd'
 import React from 'react'
 import { useBanner, useTopPlaylistHighquality } from '@/services/api'
-import Swiper from './swiper'
+import BannerList from './bannerList'
 import Main from './main'
 import { useQueries } from 'react-query'
 
-const index: React.FC = () => {
+const Index: React.FC = () => {
   const [bannerQuery, playListQuery] = useQueries([
     { queryKey: ['banner'], queryFn: () => useBanner() },
     { queryKey: ['playList'], queryFn: () => useTopPlaylistHighquality() }
@@ -16,7 +16,7 @@ const index: React.FC = () => {
       <Row gutter={16} style={{ margin: '10px' }}>
         <Col span={24}>
           <Card bordered={false}>
-            <Swiper bannnerList={bannerQuery.data} />
+            <BannerList bannnerList={bannerQuery.data} />
           </Card>
         </Col>
         <Col span={24} style={{ marginTop: '10px' }}>
@@ -31,4 +31,4 @@ const index: React.FC = () => {
   return <>{content}</>
 }
 
-export default index
+export default Index
